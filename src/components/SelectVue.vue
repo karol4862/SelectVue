@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     focusInput() {
-      const ul = document.querySelector('ul');
+      const ul = document.querySelector('ul.vs__dropdown-menu');
       if (ul) {
         const ulCords = ul.getBoundingClientRect();
         // eslint-disable-next-line no-unused-expressions
