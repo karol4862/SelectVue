@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <SelectVue v-model="results" :options="options" label="value" requiredForm/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import SelectVue from './components/SelectVue.vue';
 
 export default {
   name: 'app',
+  data() {
+    return {
+      results: '',
+      options: [{
+        id: 1,
+        value: 'option 1',
+      },
+      {
+        id: 2,
+        value: 'option 2',
+      },
+      {
+        id: 3,
+        value: 'option 3',
+      },
+      {
+        id: 4,
+        value: 'option 4',
+      },
+      ],
+    };
+  },
   components: {
-    HelloWorld,
+    SelectVue,
   },
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>
