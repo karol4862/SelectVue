@@ -48,7 +48,7 @@ export default {
       if (ul) {
         const ulCords = ul.getBoundingClientRect();
         // eslint-disable-next-line no-unused-expressions
-        ulCords.top + ulCords.height > window.innerHeight && ul.classList.add('menu-top');
+        ulCords.top + ulCords.height > window.scrollY + window.innerHeight && ul.classList.add('menu-top');
       }
     },
   },
