@@ -1,9 +1,8 @@
 <template>
-  <div @click='focusInput' ref="select" :value="inputVal">
+  <div @click='focusInput' :value="inputVal">
     <v-select :options="options" :label="label" v-model="inputVal"
       :multiple="multiple" :searchable="options.length > searchable ? true : false"
       :placeholder="placeholder ? placeholder : ' '"
-      ref="selectInput"
     >
       <template #search="{attributes, events}">
         <input
@@ -44,12 +43,15 @@ export default {
   computed: {
     inputVal: {
       get() {
-        return this.$attrs.value[this.label];
+        return this.$attrs.value;
       },
       set(val) {
         this.$emit('input', val);
         this.results = val;
       },
+    },
+    attributeValue() {
+      return this.$attrs.value;
     },
   },
   methods: {
@@ -61,14 +63,6 @@ export default {
         ulCords.top + ulCords.height > window.innerHeight && ul.classList.add('menu-top');
       }
     },
-  },
-  created() {
-    this.$nextTick(() => {
-      // if (this.$attrs.value) {
-      //   this.$refs.selectInput.value = this.$attrs.value[this.label];
-      // }
-      console.log(this.$refs.selectInput);
-    });
   },
 };
 </script>
