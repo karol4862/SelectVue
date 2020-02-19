@@ -3,6 +3,7 @@
     <v-select :options="options" :label="label" v-model="inputVal"
       :multiple="multiple" :searchable="options.length > searchable ? true : false"
       :placeholder="placeholder ? placeholder : ' '"
+      ref="selectInput"
     >
       <template #search="{attributes, events}">
         <input
@@ -10,7 +11,6 @@
           v-bind="attributes"
           :required="requiredForm && !results"
           v-on="events"
-          ref="selectInput"
         />
       </template>
     </v-select>
@@ -44,7 +44,7 @@ export default {
   computed: {
     inputVal: {
       get() {
-        return this.value;
+        return this.$attrs.value[this.label];
       },
       set(val) {
         this.$emit('input', val);
@@ -64,9 +64,10 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      if (this.$attrs.value) {
-        this.$refs.selectInput.value = this.$attrs.value[this.label];
-      }
+      // if (this.$attrs.value) {
+      //   this.$refs.selectInput.value = this.$attrs.value[this.label];
+      // }
+      console.log(this.$refs.selectInput);
     });
   },
 };
