@@ -66,7 +66,6 @@ export default {
     this.$nextTick(() => {
       if (this.$attrs.value) {
         this.$refs.selectInput.value = this.$attrs.value[this.label];
-        console.log(this.$refs.selectInput);
       }
     });
   },
