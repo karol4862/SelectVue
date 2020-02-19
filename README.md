@@ -1,24 +1,42 @@
 # vselect
 
-## Project setup
+## Install
 ```
-npm install
+npm i @karol4862/vselect
+```
+## Import 
+```
+import { vSelectComponent } from '@karol4862/vselect/src';
+```
+## Usage
+
+```
+<template>
+  <div>
+    <vSelectComponent v-model="results" :options="options" label="value" requiredForm/>
+  </div>
+</template>
+```
+```
+export default {
+  data() {
+    return {
+      options: [{
+        id: 1,
+        value: 'option 1',
+      },
+      ],
+    };
+  }
+}
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Props
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+| Prop | Description |
+| --- | --- |
+| options | Array with elements to render |
+| label | One of the variables will be displayed|
+| requiredForm | If true, form will require this section |
+| searchable | Set a number, if there are more options than a set number search is available, default is 10 |
+| multiple | Multi select |
