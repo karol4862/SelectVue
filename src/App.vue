@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div >
     <SelectVue v-model="results" :options="options" label="id" requiredForm
-      searchable
     />
   </div>
 </template>
@@ -13,7 +12,7 @@ export default {
   name: 'app',
   data() {
     return {
-      results: '',
+      results: { name: 'elo', id: 1 },
       options: [{
         id: 1,
         key: 'slideshow_homepage',

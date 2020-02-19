@@ -40,3 +40,4 @@ export default {
 | requiredForm | If true, form will require this section |
 | searchable | Set a number, if there are more options than a set number search is available, default is 10 |
 | multiple | Multi select |
+| placeholder | Set placeholder |
