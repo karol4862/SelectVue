@@ -1,5 +1,5 @@
 <template>
-  <div @click='focusInput' ref="select" :value="inputVal">
+  <div @click='focusInput' class="position-relative">
     <v-select :options="options" :label="label" v-model="inputVal"
       :multiple="multiple" :searchable="options.length > searchable ? true : false"
       :placeholder="placeholder ? placeholder : ' '"
@@ -8,9 +8,13 @@
         <input
           class="vs__search"
           v-bind="attributes"
-          :required="requiredForm && !results"
           v-on="events"
-          ref="selectInput"
+          ref="select"
+        />
+        <input
+          :required="!inputVal && requiredForm"
+          class="hidden position-absolute"
+          @focus="triggerMenu"
         />
       </template>
     </v-select>
@@ -22,19 +26,14 @@ import vSelect from 'vue-select';
 
 export default {
   name: 'SelectVue',
-  data() {
-    return {
-      results: '',
-    };
-  },
   props: {
     options: Array,
     requiredForm: Boolean,
     label: String,
     multiple: Boolean,
     searchable: {
-      default: 10,
       type: [Boolean, Number],
+      default: 10,
     },
     placeholder: [Boolean, String],
   },
@@ -44,11 +43,10 @@ export default {
   computed: {
     inputVal: {
       get() {
-        return this.value;
+        return this.$attrs.value;
       },
       set(val) {
         this.$emit('input', val);
-        this.results = val;
       },
     },
   },
@@ -61,13 +59,9 @@ export default {
         ulCords.top + ulCords.height > window.innerHeight && ul.classList.add('menu-top');
       }
     },
-  },
-  created() {
-    this.$nextTick(() => {
-      if (this.$attrs.value) {
-        this.$refs.selectInput.value = this.$attrs.value[this.label];
-      }
-    });
+    triggerMenu() {
+      this.$refs.select.focus();
+    },
   },
 };
 </script>
@@ -78,6 +72,11 @@ export default {
   transform: translateY(-100%) !important;
 }
 
+.hidden{
+  opacity: 0;
+  z-index: -1;
+  left: 50%;
+}
 .v-select {
   position: relative;
   font-family: inherit

@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <SelectVue v-model="results" :options="options" label="id" requiredForm
     />
   </div>
@@ -12,7 +12,16 @@ export default {
   name: 'app',
   data() {
     return {
-      results: { name: 'elo', id: 1 },
+      results: {
+        id: 1,
+        key: 'slideshow_homepage',
+        name: 'Baner - Karuzela główna na stronie głównej',
+        permissions: ['key', 'link', 'imagePath'],
+        params: {
+          imagePath: 'slideshow_homepage/',
+          category: 'baner',
+        },
+      },
       options: [{
         id: 1,
         key: 'slideshow_homepage',
