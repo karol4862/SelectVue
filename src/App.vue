@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       results: {
-        id: 1,
+        id: 6,
         key: 'slideshow_homepage',
         name: 'Baner - Karuzela główna na stronie głównej',
         permissions: ['key', 'link', 'imagePath'],
@@ -23,7 +23,7 @@ export default {
         },
       },
       options: [{
-        id: 1,
+        id: 6,
         key: 'slideshow_homepage',
         name: 'Baner - Karuzela główna na stronie głównej',
         permissions: ['key', 'link', 'imagePath'],

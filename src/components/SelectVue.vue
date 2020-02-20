@@ -49,6 +49,9 @@ export default {
         this.$emit('input', val);
       },
     },
+    attributeValue() {
+      return this.$attrs.value;
+    },
   },
   methods: {
     focusInput() {
